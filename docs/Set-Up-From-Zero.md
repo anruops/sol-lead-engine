@@ -59,7 +59,7 @@ The workflow calls the scoring service once per lead, so **n8n must be able to r
 1. In Telegram, open **@BotFather**, send `/newbot`, and pick a name and a username ending in `bot`.
 2. BotFather replies with a **token**. **Treat it like a password**: anyone with it controls your bot.
 3. Send your bot any message.
-4. Find your **chat id**: open `https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates` and look for `"chat":{"id": ...}`. Close the tab afterwards (the token is in the address).
+4. Find your **chat id**: open `https://api.telegram.org/bot<your token>/getUpdates` and look for `"chat":{"id": ...}`. Close the tab afterwards (the token is in the address).
 
 **If the token leaks:** BotFather → `/mybots` → your bot → **API Token** → **Revoke current token**, then replace it everywhere. Taps made just before a revoke can be lost; tap again on a fresh card.
 
@@ -89,7 +89,7 @@ The workflow calls the scoring service once per lead, so **n8n must be able to r
 1. Import `workflow/sol-lead-engine.json` (⋯ → **Import from File**).
 2. **Postgres credential:** Credentials → New → Postgres; paste the connection details, set SSL as your host requires, **Test**. Attach it to every Postgres node (they show ⚠ until you do).
 3. **Telegram credential:** Credentials → New → Telegram API → paste the token → Test. Attach it to every Telegram node.
-4. **Bot token in three HTTP nodes:** **Get Updates**, **Edit Card** and **Edit Old Card** call Telegram directly. Replace `<YOUR_BOT_TOKEN>` in each URL (keep the field in Expression mode). Cleaner alternative: an environment variable read with `{{ $env.YOUR_VAR }}`, which needs `N8N_BLOCK_ENV_ACCESS_IN_NODE=false`.
+4. **Bot token in three HTTP nodes:** **Get Updates**, **Edit Card** and **Edit Old Card** call Telegram directly. Replace `YOUR_TELEGRAM_BOT_TOKEN` in each URL with your token (keep the field in Expression mode). **Placeholders in the file:** `YOUR_TELEGRAM_BOT_TOKEN` (your token), `YOUR_TELEGRAM_CHAT_ID` (Config and Error Alert), `YOUR_POSTGRES_CREDENTIAL` and `YOUR_TELEGRAM_CREDENTIAL` (attach your own credentials to those nodes). `SAMPLE_PHONE_n`, `SAMPLE_EMAIL_n` and `SAMPLE_WEBSITE_n` are anonymized test data and need no change. Cleaner alternative: an environment variable read with `{{ $env.YOUR_VAR }}`, which needs `N8N_BLOCK_ENV_ACCESS_IN_NODE=false`.
 5. **Score node:** set the URL for your setup (Step 0). If you set `RECON_SCORE_KEY`, add the header `X-Score-Key`.
 6. **Workflow Settings:** your timezone · Error Workflow = this workflow · successful production executions **Do not save** (Poll Taps runs 1,440 times a day) · failed executions **Save**.
 

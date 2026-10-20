@@ -9,7 +9,7 @@
           "parameters": [
             {
               "name": "data",
-              "value": "=[out:json][timeout:180][bbox:{{ $json.south }},{{ $json.west }},{{ $json.north }},{{ $json.east }}];\n(\n  nwr[\"sport\"~\"{{ $json.niche }}\"];\n  nwr[\"leisure\"=\"fitness_centre\"][\"name\"~\"[\"name\"~\"{{ $json.niche }}\",i];\n);\nout center meta;"
+              "value": "=[out:json][timeout:180][bbox:{{ $json.south }},{{ $json.west }},{{ $json.north }},{{ $json.east }}];\n(\n  nwr[\"sport\"~\"{{ $json.niche }}\"];\n  nwr[\"leisure\"=\"fitness_centre\"][\"name\"~\"{{ $json.niche }}\",i];\n);\nout center meta;"
             }
           ]
         },
@@ -151,7 +151,7 @@
           "parameters": [
             {
               "name": "data",
-              "value": "=[out:json][timeout:180][bbox:{{ $json.south }},{{ $json.west }},{{ $json.north }},{{ $json.east }}];\n(\n  nwr[\"sport\"~\"{{ $json.niche }}\"];\n  nwr[\"leisure\"=\"fitness_centre\"][\"name\"~\"[Yy]oga|[Pp]ilates\"];\n);\nout center meta;"
+              "value": "=[out:json][timeout:180][bbox:{{ $json.south }},{{ $json.west }},{{ $json.north }},{{ $json.east }}];\n(\n  nwr[\"sport\"~\"{{ $json.niche }}\"];\n  nwr[\"leisure\"=\"fitness_centre\"][\"name\"~\"{{ $json.niche }}\",i];\n);\nout center meta;"
             }
           ]
         },
@@ -210,7 +210,13 @@
         -160
       ],
       "id": "8d888844-7495-4be1-891b-d276ccbba179",
-      "name": "Upsert Leads"
+      "name": "Upsert Leads",
+      "credentials": {
+        "postgres": {
+          "id": "YOUR_POSTGRES_CREDENTIAL",
+          "name": "YOUR_POSTGRES_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -228,7 +234,13 @@
       ],
       "id": "bc2b1003-7c4a-4da4-b2be-6fd51ae0b26f",
       "name": "Log Mining Run",
-      "executeOnce": true
+      "executeOnce": true,
+      "credentials": {
+        "postgres": {
+          "id": "YOUR_POSTGRES_CREDENTIAL",
+          "name": "YOUR_POSTGRES_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -266,7 +278,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const elements = [\n  {\n    \"type\": \"node\",\n    \"id\": 599493144,\n    \"lat\": 30.3984426,\n    \"lon\": -97.7492355,\n    \"timestamp\": \"2020-01-12T03:10:46Z\",\n    \"tags\": {\n      \"leisure\": \"sports_centre\",\n      \"name\": \"Sunstone Yoga\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 2527535393,\n    \"lat\": 30.3510432,\n    \"lon\": -97.7192825,\n    \"timestamp\": \"2025-11-23T16:08:37Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"1308\",\n      \"addr:postcode\": \"78757\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"West Anderson Lane\",\n      \"addr:unit\": \"A\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Studio Satya\",\n      \"phone\": \"+1-555-0101\",\n      \"sport\": \"yoga\",\n      \"website\": \"https://www.studiosatya.com/\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 2705156688,\n    \"lat\": 30.4997644,\n    \"lon\": -97.8134229,\n    \"timestamp\": \"2024-06-27T08:19:59Z\",\n    \"tags\": {\n      \"addr:city\": \"Cedar Park\",\n      \"addr:housenumber\": \"930\",\n      \"addr:postcode\": \"78613\",\n      \"addr:street\": \"S Bell Blvd., Suite 301\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Breath and Balance Bodyworks\",\n      \"note\": \"Private Yoga Instruction\",\n      \"payment:litecoin\": \"yes\",\n      \"phone\": \"+1-555-0102\",\n      \"sport\": \"yoga\",\n      \"website\": \"https://www.breathandbalancebodyworks.com/\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 3764021161,\n    \"lat\": 30.26587,\n    \"lon\": -97.741632,\n    \"timestamp\": \"2015-10-22T16:31:11Z\",\n    \"tags\": {\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Wanderlust Yoga\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 3825243606,\n    \"lat\": 30.260472,\n    \"lon\": -97.734817,\n    \"timestamp\": \"2025-02-01T19:44:50Z\",\n    \"tags\": {\n      \"addr:housenumber\": \"913\",\n      \"addr:street\": \"East Cesar Chavez Street\",\n      \"coa:place_id\": \"1163135\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Black Swan Yoga\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 3849776348,\n    \"lat\": 30.2651252,\n    \"lon\": -97.7455376,\n    \"timestamp\": \"2026-05-02T19:31:20Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"204\",\n      \"addr:postcode\": \"78701\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Colorado Street\",\n      \"branch\": \"Downtown Austin\",\n      \"brand\": \"[solidcore]\",\n      \"brand:wikidata\": \"Q124429271\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Solidcore\",\n      \"phone\": \"+1-555-0103\",\n      \"sport\": \"pilates\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 3857693597,\n    \"lat\": 30.270566,\n    \"lon\": -97.7558102,\n    \"timestamp\": \"2026-05-20T06:37:27Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"1011\",\n      \"addr:postcode\": \"78703\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"West 5th Street\",\n      \"addr:unit\": \"140\",\n      \"brand\": \"Jetset Pilates\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Jetset Pilates\",\n      \"not:brand:wikidata\": \"Q109328844\",\n      \"phone\": \"+1-555-0104\",\n      \"sport\": \"pilates\",\n      \"website\": \"https://jetsetpilates.com/tx/downtown-austin/\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 5771447958,\n    \"lat\": 30.2304202,\n    \"lon\": -97.7982812,\n    \"timestamp\": \"2026-04-07T03:59:24Z\",\n    \"tags\": {\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Flow Yoga\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 5771447970,\n    \"lat\": 30.2313218,\n    \"lon\": -97.8014382,\n    \"timestamp\": \"2018-07-19T18:37:39Z\",\n    \"tags\": {\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Black Swan Yoga\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 6348354559,\n    \"lat\": 30.5503066,\n    \"lon\": -97.8532955,\n    \"timestamp\": \"2023-02-27T16:32:36Z\",\n    \"tags\": {\n      \"addr:city\": \"Leander\",\n      \"addr:housenumber\": \"1904\",\n      \"addr:postcode\": \"78641\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"South Bagdad Road\",\n      \"addr:unit\": \"4\",\n      \"check_date\": \"2023-02-27\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Trybe Yoga\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 6455846385,\n    \"lat\": 30.3152599,\n    \"lon\": -97.7338229,\n    \"timestamp\": \"2024-01-16T01:13:49Z\",\n    \"tags\": {\n      \"brand\": \"CorePower Yoga\",\n      \"brand:wikidata\": \"Q21015663\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"CorePower Yoga\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 8064257679,\n    \"lat\": 30.533445,\n    \"lon\": -97.8196367,\n    \"timestamp\": \"2022-06-26T03:21:53Z\",\n    \"tags\": {\n      \"brand\": \"Club Pilates\",\n      \"brand:wikidata\": \"Q109328844\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Club Pilates\",\n      \"sport\": \"pilates\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 8218109708,\n    \"lat\": 30.4952162,\n    \"lon\": -97.6664257,\n    \"timestamp\": \"2023-10-18T22:43:31Z\",\n    \"tags\": {\n      \"addr:city\": \"Round Rock\",\n      \"addr:housenumber\": \"1011\",\n      \"addr:postcode\": \"78664\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Gattis School Road\",\n      \"addr:unit\": \"109\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Round Rock Krav Maga & Kick Boxing\",\n      \"phone\": \"+1-555-0105\",\n      \"sport\": \"fitness;kickboxing;krav_maga;yoga\",\n      \"website\": \"https://www.roundrockkravmaga.com/\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 8881107227,\n    \"lat\": 30.3251178,\n    \"lon\": -97.7152592,\n    \"timestamp\": \"2022-12-11T18:12:52Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"109\",\n      \"addr:postcode\": \"78752\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Jacob Fontaine Lane\",\n      \"addr:unit\": \"800\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"My Vinyasa Practice\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 8936903699,\n    \"lat\": 30.2987668,\n    \"lon\": -97.701392,\n    \"timestamp\": \"2023-03-07T06:54:50Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"2112\",\n      \"addr:postcode\": \"78723\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Robert Browning Street\",\n      \"email\": \"contact@example.com\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Ashtanga Yoga Austin\",\n      \"sport\": \"yoga\",\n      \"website\": \"https://ashtangayogaaustin.com\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 9027639852,\n    \"lat\": 30.3482173,\n    \"lon\": -97.3708591,\n    \"timestamp\": \"2023-05-14T21:17:50Z\",\n    \"tags\": {\n      \"addr:city\": \"Elgin\",\n      \"addr:housenumber\": \"28\",\n      \"addr:postcode\": \"78621\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"North Main Street\",\n      \"check_date\": \"2023-05-14\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Body + Shine Wellness\",\n      \"phone\": \"+1-555-0106\",\n      \"sport\": \"yoga;pilates\",\n      \"website\": \"https://www.bodyandshinewellness.com/\",\n      \"wheelchair\": \"yes\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 9947713718,\n    \"lat\": 30.351352,\n    \"lon\": -97.7215105,\n    \"timestamp\": \"2022-08-11T15:33:48Z\",\n    \"tags\": {\n      \"addr:postcode\": \"78757\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Black Swan Yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 10566132284,\n    \"lat\": 30.2153289,\n    \"lon\": -97.8339027,\n    \"timestamp\": \"2023-01-18T21:47:13Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:country\": \"US\",\n      \"addr:housenumber\": \"3601\",\n      \"addr:postcode\": \"78749\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"West William Cannon Drive\",\n      \"addr:unit\": \"100\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"B Pilates\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 10718029541,\n    \"lat\": 30.3233272,\n    \"lon\": -97.7270069,\n    \"timestamp\": \"2023-03-07T01:37:24Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"5501\",\n      \"addr:postcode\": \"78751\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"North Lamar Boulevard\",\n      \"addr:unit\": \"C111\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Body Collective\",\n      \"phone\": \"+1-555-0107\",\n      \"sport\": \"yoga;dance;dancing;pilates;barre;kizomba\",\n      \"website\": \"https://austinbodycollective.com\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 10815473953,\n    \"lat\": 30.2945795,\n    \"lon\": -97.8240079,\n    \"timestamp\": \"2023-04-16T00:12:47Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"5604\",\n      \"addr:postcode\": \"78746\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Bee Caves Road\",\n      \"check_date\": \"2023-04-15\",\n      \"email\": \"contact@example.com\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Wild Heart Yoga\",\n      \"opening_hours\": \"Mo-Fr 07:00-21:00; Sa-Su 09:00-17:00\",\n      \"phone\": \"+1-555-0108\",\n      \"sport\": \"yoga\",\n      \"website\": \"https://www.wildheartyogaaustin.com\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 11157995497,\n    \"lat\": 30.0871114,\n    \"lon\": -97.8298144,\n    \"timestamp\": \"2023-08-30T23:00:43Z\",\n    \"tags\": {\n      \"brand\": \"Club Pilates\",\n      \"brand:wikidata\": \"Q109328844\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Club Pilates\",\n      \"sport\": \"pilates\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 11447347958,\n    \"lat\": 30.2742602,\n    \"lon\": -97.7992642,\n    \"timestamp\": \"2023-12-23T20:54:39Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"3300\",\n      \"addr:postcode\": \"78746\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Bee Caves Road\",\n      \"addr:unit\": \"745\",\n      \"check_date\": \"2023-12-23\",\n      \"email\": \"contact@example.com\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Pilates Movement Studio\",\n      \"phone\": \"+1-555-0109\",\n      \"website\": \"https://www.thepilatesmovementstudio.net/\",\n      \"wheelchair\": \"yes\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 11801652627,\n    \"lat\": 30.4763818,\n    \"lon\": -97.8409929,\n    \"timestamp\": \"2024-04-08T09:05:14Z\",\n    \"tags\": {\n      \"addr:city\": \"Cedar Park\",\n      \"addr:housenumber\": \"2051\",\n      \"addr:postcode\": \"78613\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Cypress Creek Road\",\n      \"addr:unit\": \"G\",\n      \"email\": \"contact@example.com\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Ying Yoga\",\n      \"phone\": \"+1-555-0110\",\n      \"sport\": \"yoga\",\n      \"website\": \"https://www.ying.yoga/\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 12244285823,\n    \"lat\": 29.9960511,\n    \"lon\": -98.0968731,\n    \"timestamp\": \"2024-10-11T14:14:10Z\",\n    \"tags\": {\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Wimberley Pilates\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 12256459084,\n    \"lat\": 30.4793944,\n    \"lon\": -97.8293102,\n    \"timestamp\": \"2025-01-04T07:18:53Z\",\n    \"tags\": {\n      \"addr:city\": \"Cedar Park\",\n      \"addr:housenumber\": \"2015\",\n      \"addr:postcode\": \"78613\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Little Elm Trail\",\n      \"addr:unit\": \"500\",\n      \"check_date\": \"2025-01-04\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Fifty/50 Pilates\",\n      \"opening_hours\": \"Mo-Fr 07:00-20:00; Sa-Su 08:00-15:00\",\n      \"phone\": \"+1-555-0111\",\n      \"sport\": \"pilates\",\n      \"website\": \"https://www.fifty50pilates.com/\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 12347069728,\n    \"lat\": 30.2983374,\n    \"lon\": -97.7058796,\n    \"timestamp\": \"2024-11-17T03:20:51Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:postcode\": \"78723\",\n      \"addr:state\": \"TX\",\n      \"addr:unit\": \"101\",\n      \"brand\": \"CorePower Yoga\",\n      \"brand:wikidata\": \"Q21015663\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"CorePower Yoga\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 12707881037,\n    \"lat\": 30.253113,\n    \"lon\": -97.7636248,\n    \"timestamp\": \"2025-03-28T21:31:11Z\",\n    \"tags\": {\n      \"check_date:opening_hours\": \"2025-03-28\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Pure Pilates Austin\",\n      \"opening_hours:signed\": \"no\",\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 13269384443,\n    \"lat\": 30.2658766,\n    \"lon\": -97.7438805,\n    \"timestamp\": \"2026-02-12T05:04:20Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"3145\",\n      \"addr:postcode\": \"78704\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Congress Avenue\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Yoga Hom\",\n      \"opening_hours\": \"Mo-Th 06:00-20:00; Fr 06:00-17:30; Sa 08:00-14:00; Su 09:30-14:00\",\n      \"sport\": \"yoga\",\n      \"website\": \"https://www.yogahomaustin.com/\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 13334610085,\n    \"lat\": 30.2639097,\n    \"lon\": -97.7325762,\n    \"timestamp\": \"2025-11-26T20:22:36Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"1011\",\n      \"addr:postcode\": \"78702\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"East 5th Street\",\n      \"addr:unit\": \"130\",\n      \"brand\": \"Club Pilates\",\n      \"brand:wikidata\": \"Q109328844\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Club Pilates\",\n      \"sport\": \"pilates\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 13408218784,\n    \"lat\": 30.5294431,\n    \"lon\": -97.8141821,\n    \"timestamp\": \"2025-12-26T07:53:23Z\",\n    \"tags\": {\n      \"addr:city\": \"Cedar Park\",\n      \"addr:housenumber\": \"1335\",\n      \"addr:postcode\": \"78613\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"East Whitestone Boulevard\",\n      \"addr:unit\": \"D185\",\n      \"brand\": \"CorePower Yoga\",\n      \"brand:wikidata\": \"Q21015663\",\n      \"check_date\": \"2025-12-25\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"CorePower Yoga\",\n      \"opening_hours\": \"Mo-Fr 06:00-20:30; Sa-Su 07:30-18:00\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 13712909201,\n    \"lat\": 30.1718172,\n    \"lon\": -97.7863234,\n    \"timestamp\": \"2026-04-07T04:10:14Z\",\n    \"tags\": {\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Flow Yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 13910916101,\n    \"lat\": 30.447464,\n    \"lon\": -97.7871422,\n    \"timestamp\": \"2026-06-19T08:50:45Z\",\n    \"tags\": {\n      \"check_date\": \"2026-06-04\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Anahata Yoga Sanctuary\",\n      \"sport\": \"yoga\",\n      \"website\": \"https://anahatayogaatx.com/\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 14075908601,\n    \"lat\": 30.2792606,\n    \"lon\": -97.7595565,\n    \"timestamp\": \"2026-08-06T02:25:20Z\",\n    \"tags\": {\n      \"addr:housenumber\": \"1013\",\n      \"addr:postcode\": \"78703\",\n      \"addr:street\": \"West Lynn Street\",\n      \"check_date\": \"2026-08-05\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Activ8 Studio\",\n      \"phone\": \"+1-555-0112\",\n      \"sport\": \"yoga\",\n      \"website\": \"https://activ8studio.com/\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 14077947501,\n    \"lat\": 30.2717035,\n    \"lon\": -97.7593163,\n    \"timestamp\": \"2026-08-07T03:38:45Z\",\n    \"tags\": {\n      \"addr:housenumber\": \"1213\",\n      \"addr:postcode\": \"78703\",\n      \"addr:street\": \"West 5th Street\",\n      \"check_date\": \"2026-08-06\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Black Swan Yoga\",\n      \"phone\": \"+1-555-0113\",\n      \"sport\": \"yoga\",\n      \"website\": \"https://www.blackswanyoga.com/studios/orchard\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 14220760901,\n    \"lat\": 30.2745999,\n    \"lon\": -97.7640866,\n    \"timestamp\": \"2026-09-26T23:37:26Z\",\n    \"tags\": {\n      \"addr:housenumber\": \"1614\",\n      \"addr:postcode\": \"78703\",\n      \"addr:street\": \"West 5th Street\",\n      \"check_date\": \"2026-09-26\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Haus of B\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"way\",\n    \"id\": 382713727,\n    \"timestamp\": \"2023-10-04T01:45:53Z\",\n    \"center\": {\n      \"lat\": 30.2872383,\n      \"lon\": -97.7012325\n    },\n    \"nodes\": [\n      3859335482,\n      3859335467,\n      3859335488,\n      3859335501,\n      3859335482\n    ],\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"3317\",\n      \"addr:postcode\": \"78723\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Manor Road\",\n      \"building\": \"yes\",\n      \"height\": \"5.4\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Dharma Yoga\",\n      \"sport\": \"yoga\"\n    }\n  }\n]\nreturn [{ json: { elements } }];"
+        "jsCode": "const elements = [\n  {\n    \"type\": \"node\",\n    \"id\": 599493144,\n    \"lat\": 30.3984426,\n    \"lon\": -97.7492355,\n    \"timestamp\": \"2020-01-12T03:10:46Z\",\n    \"tags\": {\n      \"leisure\": \"sports_centre\",\n      \"name\": \"Sunstone Yoga\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 2527535393,\n    \"lat\": 30.3510432,\n    \"lon\": -97.7192825,\n    \"timestamp\": \"2025-11-23T16:08:37Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"1308\",\n      \"addr:postcode\": \"78757\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"West Anderson Lane\",\n      \"addr:unit\": \"A\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Studio Satya\",\n      \"phone\": \"SAMPLE_PHONE_1\",\n      \"sport\": \"yoga\",\n      \"website\": \"SAMPLE_WEBSITE_1\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 2705156688,\n    \"lat\": 30.4997644,\n    \"lon\": -97.8134229,\n    \"timestamp\": \"2024-06-27T08:19:59Z\",\n    \"tags\": {\n      \"addr:city\": \"Cedar Park\",\n      \"addr:housenumber\": \"930\",\n      \"addr:postcode\": \"78613\",\n      \"addr:street\": \"S Bell Blvd., Suite 301\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Breath and Balance Bodyworks\",\n      \"note\": \"Private Yoga Instruction\",\n      \"payment:litecoin\": \"yes\",\n      \"phone\": \"SAMPLE_PHONE_2\",\n      \"sport\": \"yoga\",\n      \"website\": \"SAMPLE_WEBSITE_2\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 3764021161,\n    \"lat\": 30.26587,\n    \"lon\": -97.741632,\n    \"timestamp\": \"2015-10-22T16:31:11Z\",\n    \"tags\": {\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Wanderlust Yoga\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 3825243606,\n    \"lat\": 30.260472,\n    \"lon\": -97.734817,\n    \"timestamp\": \"2025-02-01T19:44:50Z\",\n    \"tags\": {\n      \"addr:housenumber\": \"913\",\n      \"addr:street\": \"East Cesar Chavez Street\",\n      \"coa:place_id\": \"1163135\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Black Swan Yoga\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 3849776348,\n    \"lat\": 30.2651252,\n    \"lon\": -97.7455376,\n    \"timestamp\": \"2026-05-02T19:31:20Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"204\",\n      \"addr:postcode\": \"78701\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Colorado Street\",\n      \"branch\": \"Downtown Austin\",\n      \"brand\": \"[solidcore]\",\n      \"brand:wikidata\": \"Q124429271\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Solidcore\",\n      \"phone\": \"SAMPLE_PHONE_3\",\n      \"sport\": \"pilates\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 3857693597,\n    \"lat\": 30.270566,\n    \"lon\": -97.7558102,\n    \"timestamp\": \"2026-05-20T06:37:27Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"1011\",\n      \"addr:postcode\": \"78703\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"West 5th Street\",\n      \"addr:unit\": \"140\",\n      \"brand\": \"Jetset Pilates\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Jetset Pilates\",\n      \"not:brand:wikidata\": \"Q109328844\",\n      \"phone\": \"SAMPLE_PHONE_4\",\n      \"sport\": \"pilates\",\n      \"website\": \"SAMPLE_WEBSITE_3\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 5771447958,\n    \"lat\": 30.2304202,\n    \"lon\": -97.7982812,\n    \"timestamp\": \"2026-04-07T03:59:24Z\",\n    \"tags\": {\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Flow Yoga\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 5771447970,\n    \"lat\": 30.2313218,\n    \"lon\": -97.8014382,\n    \"timestamp\": \"2018-07-19T18:37:39Z\",\n    \"tags\": {\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Black Swan Yoga\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 6348354559,\n    \"lat\": 30.5503066,\n    \"lon\": -97.8532955,\n    \"timestamp\": \"2023-02-27T16:32:36Z\",\n    \"tags\": {\n      \"addr:city\": \"Leander\",\n      \"addr:housenumber\": \"1904\",\n      \"addr:postcode\": \"78641\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"South Bagdad Road\",\n      \"addr:unit\": \"4\",\n      \"check_date\": \"2023-02-27\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Trybe Yoga\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 6455846385,\n    \"lat\": 30.3152599,\n    \"lon\": -97.7338229,\n    \"timestamp\": \"2024-01-16T01:13:49Z\",\n    \"tags\": {\n      \"brand\": \"CorePower Yoga\",\n      \"brand:wikidata\": \"Q21015663\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"CorePower Yoga\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 8064257679,\n    \"lat\": 30.533445,\n    \"lon\": -97.8196367,\n    \"timestamp\": \"2022-06-26T03:21:53Z\",\n    \"tags\": {\n      \"brand\": \"Club Pilates\",\n      \"brand:wikidata\": \"Q109328844\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Club Pilates\",\n      \"sport\": \"pilates\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 8218109708,\n    \"lat\": 30.4952162,\n    \"lon\": -97.6664257,\n    \"timestamp\": \"2023-10-18T22:43:31Z\",\n    \"tags\": {\n      \"addr:city\": \"Round Rock\",\n      \"addr:housenumber\": \"1011\",\n      \"addr:postcode\": \"78664\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Gattis School Road\",\n      \"addr:unit\": \"109\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Round Rock Krav Maga & Kick Boxing\",\n      \"phone\": \"SAMPLE_PHONE_5\",\n      \"sport\": \"fitness;kickboxing;krav_maga;yoga\",\n      \"website\": \"SAMPLE_WEBSITE_4\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 8881107227,\n    \"lat\": 30.3251178,\n    \"lon\": -97.7152592,\n    \"timestamp\": \"2022-12-11T18:12:52Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"109\",\n      \"addr:postcode\": \"78752\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Jacob Fontaine Lane\",\n      \"addr:unit\": \"800\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"My Vinyasa Practice\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 8936903699,\n    \"lat\": 30.2987668,\n    \"lon\": -97.701392,\n    \"timestamp\": \"2023-03-07T06:54:50Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"2112\",\n      \"addr:postcode\": \"78723\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Robert Browning Street\",\n      \"email\": \"SAMPLE_EMAIL_1\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Ashtanga Yoga Austin\",\n      \"sport\": \"yoga\",\n      \"website\": \"SAMPLE_WEBSITE_5\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 9027639852,\n    \"lat\": 30.3482173,\n    \"lon\": -97.3708591,\n    \"timestamp\": \"2023-05-14T21:17:50Z\",\n    \"tags\": {\n      \"addr:city\": \"Elgin\",\n      \"addr:housenumber\": \"28\",\n      \"addr:postcode\": \"78621\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"North Main Street\",\n      \"check_date\": \"2023-05-14\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Body + Shine Wellness\",\n      \"phone\": \"SAMPLE_PHONE_6\",\n      \"sport\": \"yoga;pilates\",\n      \"website\": \"SAMPLE_WEBSITE_6\",\n      \"wheelchair\": \"yes\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": 9947713718,\n    \"lat\": 30.351352,\n    \"lon\": -97.7215105,\n    \"timestamp\": \"2022-08-11T15:33:48Z\",\n    \"tags\": {\n      \"addr:postcode\": \"78757\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Black Swan Yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_7,\n    \"lat\": 30.2153289,\n    \"lon\": -97.8339027,\n    \"timestamp\": \"2023-01-18T21:47:13Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:country\": \"US\",\n      \"addr:housenumber\": \"3601\",\n      \"addr:postcode\": \"78749\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"West William Cannon Drive\",\n      \"addr:unit\": \"100\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"B Pilates\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_8,\n    \"lat\": 30.3233272,\n    \"lon\": -97.7270069,\n    \"timestamp\": \"2023-03-07T01:37:24Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"5501\",\n      \"addr:postcode\": \"78751\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"North Lamar Boulevard\",\n      \"addr:unit\": \"C111\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Body Collective\",\n      \"phone\": \"SAMPLE_PHONE_9\",\n      \"sport\": \"yoga;dance;dancing;pilates;barre;kizomba\",\n      \"website\": \"SAMPLE_WEBSITE_7\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_10,\n    \"lat\": 30.2945795,\n    \"lon\": -97.8240079,\n    \"timestamp\": \"2023-04-16T00:12:47Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"5604\",\n      \"addr:postcode\": \"78746\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Bee Caves Road\",\n      \"check_date\": \"2023-04-15\",\n      \"email\": \"SAMPLE_EMAIL_2\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Wild Heart Yoga\",\n      \"opening_hours\": \"Mo-Fr 07:00-21:00; Sa-Su 09:00-17:00\",\n      \"phone\": \"SAMPLE_PHONE_11\",\n      \"sport\": \"yoga\",\n      \"website\": \"SAMPLE_WEBSITE_8\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_12,\n    \"lat\": 30.0871114,\n    \"lon\": -97.8298144,\n    \"timestamp\": \"2023-08-30T23:00:43Z\",\n    \"tags\": {\n      \"brand\": \"Club Pilates\",\n      \"brand:wikidata\": \"Q109328844\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Club Pilates\",\n      \"sport\": \"pilates\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_13,\n    \"lat\": 30.2742602,\n    \"lon\": -97.7992642,\n    \"timestamp\": \"2023-12-23T20:54:39Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"3300\",\n      \"addr:postcode\": \"78746\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Bee Caves Road\",\n      \"addr:unit\": \"745\",\n      \"check_date\": \"2023-12-23\",\n      \"email\": \"SAMPLE_EMAIL_3\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Pilates Movement Studio\",\n      \"phone\": \"SAMPLE_PHONE_14\",\n      \"website\": \"SAMPLE_WEBSITE_9\",\n      \"wheelchair\": \"yes\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_15,\n    \"lat\": 30.4763818,\n    \"lon\": -97.8409929,\n    \"timestamp\": \"2024-04-08T09:05:14Z\",\n    \"tags\": {\n      \"addr:city\": \"Cedar Park\",\n      \"addr:housenumber\": \"2051\",\n      \"addr:postcode\": \"78613\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Cypress Creek Road\",\n      \"addr:unit\": \"G\",\n      \"email\": \"SAMPLE_EMAIL_4\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Ying Yoga\",\n      \"phone\": \"SAMPLE_PHONE_16\",\n      \"sport\": \"yoga\",\n      \"website\": \"SAMPLE_WEBSITE_10\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_17,\n    \"lat\": 29.9960511,\n    \"lon\": -98.0968731,\n    \"timestamp\": \"2024-10-11T14:14:10Z\",\n    \"tags\": {\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Wimberley Pilates\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_18,\n    \"lat\": 30.4793944,\n    \"lon\": -97.8293102,\n    \"timestamp\": \"2025-01-04T07:18:53Z\",\n    \"tags\": {\n      \"addr:city\": \"Cedar Park\",\n      \"addr:housenumber\": \"2015\",\n      \"addr:postcode\": \"78613\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Little Elm Trail\",\n      \"addr:unit\": \"500\",\n      \"check_date\": \"2025-01-04\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Fifty/50 Pilates\",\n      \"opening_hours\": \"Mo-Fr 07:00-20:00; Sa-Su 08:00-15:00\",\n      \"phone\": \"SAMPLE_PHONE_19\",\n      \"sport\": \"pilates\",\n      \"website\": \"SAMPLE_WEBSITE_11\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_20,\n    \"lat\": 30.2983374,\n    \"lon\": -97.7058796,\n    \"timestamp\": \"2024-11-17T03:20:51Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:postcode\": \"78723\",\n      \"addr:state\": \"TX\",\n      \"addr:unit\": \"101\",\n      \"brand\": \"CorePower Yoga\",\n      \"brand:wikidata\": \"Q21015663\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"CorePower Yoga\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_21,\n    \"lat\": 30.253113,\n    \"lon\": -97.7636248,\n    \"timestamp\": \"2025-03-28T21:31:11Z\",\n    \"tags\": {\n      \"check_date:opening_hours\": \"2025-03-28\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Pure Pilates Austin\",\n      \"opening_hours:signed\": \"no\",\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_22,\n    \"lat\": 30.2658766,\n    \"lon\": -97.7438805,\n    \"timestamp\": \"2026-02-12T05:04:20Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"3145\",\n      \"addr:postcode\": \"78704\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Congress Avenue\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Yoga Hom\",\n      \"opening_hours\": \"Mo-Th 06:00-20:00; Fr 06:00-17:30; Sa 08:00-14:00; Su 09:30-14:00\",\n      \"sport\": \"yoga\",\n      \"website\": \"SAMPLE_WEBSITE_13\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_23,\n    \"lat\": 30.2639097,\n    \"lon\": -97.7325762,\n    \"timestamp\": \"2025-11-26T20:22:36Z\",\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"1011\",\n      \"addr:postcode\": \"78702\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"East 5th Street\",\n      \"addr:unit\": \"130\",\n      \"brand\": \"Club Pilates\",\n      \"brand:wikidata\": \"Q109328844\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Club Pilates\",\n      \"sport\": \"pilates\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_24,\n    \"lat\": 30.5294431,\n    \"lon\": -97.8141821,\n    \"timestamp\": \"2025-12-26T07:53:23Z\",\n    \"tags\": {\n      \"addr:city\": \"Cedar Park\",\n      \"addr:housenumber\": \"1335\",\n      \"addr:postcode\": \"78613\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"East Whitestone Boulevard\",\n      \"addr:unit\": \"D185\",\n      \"brand\": \"CorePower Yoga\",\n      \"brand:wikidata\": \"Q21015663\",\n      \"check_date\": \"2025-12-25\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"CorePower Yoga\",\n      \"opening_hours\": \"Mo-Fr 06:00-20:30; Sa-Su 07:30-18:00\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_25,\n    \"lat\": 30.1718172,\n    \"lon\": -97.7863234,\n    \"timestamp\": \"2026-04-07T04:10:14Z\",\n    \"tags\": {\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Flow Yoga\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_26,\n    \"lat\": 30.447464,\n    \"lon\": -97.7871422,\n    \"timestamp\": \"2026-06-19T08:50:45Z\",\n    \"tags\": {\n      \"check_date\": \"2026-06-04\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Anahata Yoga Sanctuary\",\n      \"sport\": \"yoga\",\n      \"website\": \"SAMPLE_WEBSITE_14\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_27,\n    \"lat\": 30.2792606,\n    \"lon\": -97.7595565,\n    \"timestamp\": \"2026-08-06T02:25:20Z\",\n    \"tags\": {\n      \"addr:housenumber\": \"1013\",\n      \"addr:postcode\": \"78703\",\n      \"addr:street\": \"West Lynn Street\",\n      \"check_date\": \"2026-08-05\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Activ8 Studio\",\n      \"phone\": \"SAMPLE_PHONE_28\",\n      \"sport\": \"yoga\",\n      \"website\": \"SAMPLE_WEBSITE_15\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_29,\n    \"lat\": 30.2717035,\n    \"lon\": -97.7593163,\n    \"timestamp\": \"2026-08-07T03:38:45Z\",\n    \"tags\": {\n      \"addr:housenumber\": \"1213\",\n      \"addr:postcode\": \"78703\",\n      \"addr:street\": \"West 5th Street\",\n      \"check_date\": \"2026-08-06\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Black Swan Yoga\",\n      \"phone\": \"SAMPLE_PHONE_30\",\n      \"sport\": \"yoga\",\n      \"website\": \"SAMPLE_WEBSITE_16\"\n    }\n  },\n  {\n    \"type\": \"node\",\n    \"id\": SAMPLE_PHONE_31,\n    \"lat\": 30.2745999,\n    \"lon\": -97.7640866,\n    \"timestamp\": \"2026-09-26T23:37:26Z\",\n    \"tags\": {\n      \"addr:housenumber\": \"1614\",\n      \"addr:postcode\": \"78703\",\n      \"addr:street\": \"West 5th Street\",\n      \"check_date\": \"2026-09-26\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Haus of B\",\n      \"sport\": \"yoga\"\n    }\n  },\n  {\n    \"type\": \"way\",\n    \"id\": 382713727,\n    \"timestamp\": \"2023-10-04T01:45:53Z\",\n    \"center\": {\n      \"lat\": 30.2872383,\n      \"lon\": -97.7012325\n    },\n    \"nodes\": [\n      3859335482,\n      3859335467,\n      3859335488,\n      3859335501,\n      3859335482\n    ],\n    \"tags\": {\n      \"addr:city\": \"Austin\",\n      \"addr:housenumber\": \"3317\",\n      \"addr:postcode\": \"78723\",\n      \"addr:state\": \"TX\",\n      \"addr:street\": \"Manor Road\",\n      \"building\": \"yes\",\n      \"height\": \"5.4\",\n      \"leisure\": \"fitness_centre\",\n      \"name\": \"Dharma Yoga\",\n      \"sport\": \"yoga\"\n    }\n  }\n]\nreturn [{ json: { elements } }];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -296,7 +308,13 @@
       "executeOnce": true,
       "alwaysOutputData": true,
       "retryOnFail": true,
-      "waitBetweenTries": 5000
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "postgres": {
+          "id": "YOUR_POSTGRES_CREDENTIAL",
+          "name": "YOUR_POSTGRES_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -370,7 +388,13 @@
         -320
       ],
       "id": "ae50eefe-e759-4ec7-8287-cb55b29c6651",
-      "name": "Save Audit"
+      "name": "Save Audit",
+      "credentials": {
+        "postgres": {
+          "id": "YOUR_POSTGRES_CREDENTIAL",
+          "name": "YOUR_POSTGRES_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -389,7 +413,15 @@
       "id": "57e49661-fe3f-4f87-b338-beed10212472",
       "name": "Score Batch",
       "executeOnce": true,
-      "alwaysOutputData": true
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "postgres": {
+          "id": "YOUR_POSTGRES_CREDENTIAL",
+          "name": "YOUR_POSTGRES_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -407,7 +439,13 @@
         -208
       ],
       "id": "d140e92d-3aa9-4310-aaae-11d64cd82af4",
-      "name": "Save Score"
+      "name": "Save Score",
+      "credentials": {
+        "postgres": {
+          "id": "YOUR_POSTGRES_CREDENTIAL",
+          "name": "YOUR_POSTGRES_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -459,7 +497,13 @@
       ],
       "id": "e48eaba2-78e8-4601-b1a7-6755d234bae7",
       "name": "Log Score Run",
-      "executeOnce": true
+      "executeOnce": true,
+      "credentials": {
+        "postgres": {
+          "id": "YOUR_POSTGRES_CREDENTIAL",
+          "name": "YOUR_POSTGRES_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -514,7 +558,13 @@
       "executeOnce": true,
       "alwaysOutputData": false,
       "retryOnFail": true,
-      "waitBetweenTries": 5000
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "postgres": {
+          "id": "YOUR_POSTGRES_CREDENTIAL",
+          "name": "YOUR_POSTGRES_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -576,7 +626,13 @@
         -240
       ],
       "id": "d8e35bd2-e4c2-4d0a-aa94-24f221e0aeec",
-      "name": "Send Needs-Check Card"
+      "name": "Send Needs-Check Card",
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIAL",
+          "name": "YOUR_TELEGRAM_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -624,7 +680,13 @@
         -16
       ],
       "id": "de15a652-bb01-4928-be9e-0612aa005d74",
-      "name": "Send Review Card"
+      "name": "Send Review Card",
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIAL",
+          "name": "YOUR_TELEGRAM_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -641,7 +703,13 @@
         -128
       ],
       "id": "8fde11ec-2497-4214-a8ee-20c5716e61eb",
-      "name": "Mark Sent"
+      "name": "Mark Sent",
+      "credentials": {
+        "postgres": {
+          "id": "YOUR_POSTGRES_CREDENTIAL",
+          "name": "YOUR_POSTGRES_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -692,7 +760,13 @@
       "id": "c5e895a6-50ad-4897-b313-c88342dd7006",
       "name": "Get Offset",
       "retryOnFail": true,
-      "waitBetweenTries": 5000
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "postgres": {
+          "id": "YOUR_POSTGRES_CREDENTIAL",
+          "name": "YOUR_POSTGRES_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -749,7 +823,7 @@
     },
     {
       "parameters": {
-        "url": "=https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates",
+        "url": "=https://api.telegram.org/botYOUR_TELEGRAM_BOT_TOKEN/getUpdates",
         "sendQuery": true,
         "queryParameters": {
           "parameters": [
@@ -796,7 +870,13 @@
       ],
       "id": "75d814bc-0d87-497b-b714-4a096b390162",
       "name": "Save Offset",
-      "executeOnce": true
+      "executeOnce": true,
+      "credentials": {
+        "postgres": {
+          "id": "YOUR_POSTGRES_CREDENTIAL",
+          "name": "YOUR_POSTGRES_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -941,7 +1021,13 @@
       ],
       "id": "fa7df91e-6ee3-495c-a79f-ed385803e8b2",
       "name": "Write Decision",
-      "alwaysOutputData": false
+      "alwaysOutputData": false,
+      "credentials": {
+        "postgres": {
+          "id": "YOUR_POSTGRES_CREDENTIAL",
+          "name": "YOUR_POSTGRES_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -980,7 +1066,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://api.telegram.org/bot<YOUR_BOT_TOKEN>\n/editMessageReplyMarkup",
+        "url": "=https://api.telegram.org/botYOUR_TELEGRAM_BOT_TOKEN/editMessageReplyMarkup",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ JSON.stringify({\n  chat_id: $json.chat_id,\n  message_id: $json.message_id,\n  reply_markup: { inline_keyboard: [[{\n    text: ({ approve: 'Approved', reject: 'Rejected', snooze: 'Snoozed 14 days', closed: 'Marked closed', confirm_no_site: 'No site confirmed, rescoring' })[$json.action]\n          + ' · ' + $now.setZone('UTC').toFormat('MMM d, h:mm a'),\n    callback_data: 'done'\n  }]] }\n}) }}",
@@ -1011,6 +1097,12 @@
       ],
       "id": "bc7fadfa-cf80-499a-be02-9ed6c5025f72",
       "name": "Answer Tap",
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIAL",
+          "name": "YOUR_TELEGRAM_CREDENTIAL"
+        }
+      },
       "onError": "continueRegularOutput"
     },
     {
@@ -1029,6 +1121,12 @@
       ],
       "id": "db0cef8b-35f3-44a6-9b24-5336a746ffaf",
       "name": "Answer Stale",
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIAL",
+          "name": "YOUR_TELEGRAM_CREDENTIAL"
+        }
+      },
       "onError": "continueRegularOutput"
     },
     {
@@ -1050,7 +1148,13 @@
         1152
       ],
       "id": "8dd75e17-188a-46ad-b531-acbd9bb030ed",
-      "name": "Ask for URL"
+      "name": "Ask for URL",
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIAL",
+          "name": "YOUR_TELEGRAM_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -1068,12 +1172,18 @@
       ],
       "id": "1bc32797-c7ed-4c16-947c-608c610f3bc1",
       "name": "Answer Add Website",
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIAL",
+          "name": "YOUR_TELEGRAM_CREDENTIAL"
+        }
+      },
       "onError": "continueRegularOutput"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://api.telegram.org/bot<YOUR_BOT_TOKEN>\n/editMessageReplyMarkup",
+        "url": "=https://api.telegram.org/botYOUR_TELEGRAM_BOT_TOKEN/editMessageReplyMarkup",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ JSON.stringify({\n  chat_id: $json.chat_id,\n  message_id: $json.review_message_id,\n  reply_markup: { inline_keyboard: [[{\n    text: 'Website added, re-auditing · ' + $now.setZone('UTC').toFormat('MMM d, h:mm a'),\n    callback_data: 'done'\n  }]] }\n}) }}",
@@ -1103,7 +1213,13 @@
         2320
       ],
       "id": "4dc5a268-476a-4176-b901-7fad106c2199",
-      "name": "Reply Invalid"
+      "name": "Reply Invalid",
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIAL",
+          "name": "YOUR_TELEGRAM_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -1120,7 +1236,13 @@
         2112
       ],
       "id": "06a2661b-7143-4c82-ace2-4fbebe88c4e4",
-      "name": "Confirm Website"
+      "name": "Confirm Website",
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIAL",
+          "name": "YOUR_TELEGRAM_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -1171,7 +1293,13 @@
         2128
       ],
       "id": "733e7eab-b005-4fdd-821b-ba81f56e2aa8",
-      "name": "Save Website"
+      "name": "Save Website",
+      "credentials": {
+        "postgres": {
+          "id": "YOUR_POSTGRES_CREDENTIAL",
+          "name": "YOUR_POSTGRES_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -1188,7 +1316,13 @@
         544
       ],
       "id": "f40ff3bb-c03d-4b6f-a3e4-25ecec2c72f1",
-      "name": "Mark Summarized"
+      "name": "Mark Summarized",
+      "credentials": {
+        "postgres": {
+          "id": "YOUR_POSTGRES_CREDENTIAL",
+          "name": "YOUR_POSTGRES_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -1206,7 +1340,13 @@
         544
       ],
       "id": "3ddbd36a-89bd-4771-9753-5d48b3f12cc5",
-      "name": "Send Summary"
+      "name": "Send Summary",
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIAL",
+          "name": "YOUR_TELEGRAM_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -1235,7 +1375,15 @@
       ],
       "id": "37e6ed80-961d-40d6-9f0b-fd7e064958cc",
       "name": "Cold Batch",
-      "executeOnce": true
+      "executeOnce": true,
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "postgres": {
+          "id": "YOUR_POSTGRES_CREDENTIAL",
+          "name": "YOUR_POSTGRES_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {},
@@ -1250,7 +1398,7 @@
     },
     {
       "parameters": {
-        "chatId": "{TELEGRAM_CHAT_ID}",
+        "chatId": "YOUR_TELEGRAM_CHAT_ID",
         "text": "=<b>RECON error</b>\nNode: {{ $json.execution.lastNodeExecuted }}\nWhat happened: {{ String($json.execution.error.message || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') }}\nRun: {{ $json.execution.url }}",
         "additionalFields": {
           "appendAttribution": false,
@@ -1264,7 +1412,13 @@
         944
       ],
       "id": "98f20bde-01c9-4bdb-918c-6596d6b7062b",
-      "name": "Error Alert"
+      "name": "Error Alert",
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIAL",
+          "name": "YOUR_TELEGRAM_CREDENTIAL"
+        }
+      }
     },
     {
       "parameters": {
@@ -1418,7 +1572,7 @@
             {
               "id": "0c3bc808-0ce5-4cd7-9021-9af98097b1f3",
               "name": "review_chat_id",
-              "value": 0,
+              "value": "YOUR_TELEGRAM_CHAT_ID",
               "type": "number"
             }
           ]

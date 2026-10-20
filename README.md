@@ -50,7 +50,7 @@ ERROR LANE
 
 1. Create any PostgreSQL 13+ database (Neon, Supabase, managed, or Docker) and run the migrations in `database/` in order.
 2. Start the scoring service: `python scoring/score_service.py` (Python 3.10+, no installs), then open `http://127.0.0.1:8765/health`. Running n8n in Docker or n8n Cloud? See Step 0 of the setup guide for the right address.
-3. Import `workflow/sol-lead-engine.json` into n8n, attach your Postgres and Telegram credentials, and put your bot token where it says `<YOUR_BOT_TOKEN>`.
+3. Import `workflow/sol-lead-engine.json` into n8n, attach your Postgres and Telegram credentials, and put your bot token where it says `YOUR_TELEGRAM_BOT_TOKEN`.
 4. Edit **Config**: your area, niche keywords, country and chat id. Leave `use_fixture` on for the first run.
 5. Run it, tap a card, then switch `use_fixture` off and publish.
 

@@ -1,6 +1,6 @@
 # SOL Lead Engine · System Guide (General Edition)
 
-*v1.0 · rubric v0.3 · 58 working nodes · generated 2026-10-19 from the live n8n export by `tools/build_docs.py`.*
+*v1.0 · rubric v0.3 · 58 working nodes · generated 2026-10-20 from the live n8n export by `tools/build_docs.py`.*
 
 > **Living document.** Regenerated from the workflow itself, so it always matches what runs. Sections marked *changes with the build* are edited by the generator, not by hand.
 
@@ -76,7 +76,7 @@ Every node below says **where it sits** (its path, lane, what feeds it and where
 | assignments.assignments › country | `US` |
 | assignments.assignments › batch_size | `10` |
 | assignments.assignments › use_fixture | `False` |
-| assignments.assignments › review_chat_id | `{TELEGRAM_CHAT_ID}` |
+| assignments.assignments › review_chat_id | `YOUR_TELEGRAM_CHAT_ID` |
 
 ### 3 · Search Area
 
@@ -153,9 +153,9 @@ const elements = [
       "addr:unit": "A",
       "leisure": "fitness_centre",
       "name": "Studio Satya",
-      "phone": "+1-555-0101",
+      "phone": "SAMPLE_PHONE_1",
       "sport": "yoga",
-      "website": "https://www.studiosatya.com/"
+      "website": "SAMPLE_WEBSITE_1"
     }
   },
   {
@@ -173,9 +173,9 @@ const elements = [
       "name": "Breath and Balance Bodyworks",
       "note": "Private Yoga Instruction",
       "payment:litecoin": "yes",
-      "phone": "+1-555-0102",
+      "phone": "SAMPLE_PHONE_2",
       "sport": "yoga",
-      "website": "https://www.breathandbalancebodyworks.com/"
+      "website": "SAMPLE_WEBSITE_2"
     }
   },
   {
@@ -222,7 +222,7 @@ const elements = [
       "brand:wikidata": "Q124429271",
       "leisure": "fitness_centre",
       "name": "Solidcore",
-      "phone": "+1-555-0103",
+      "phone": "SAMPLE_PHONE_3",
       "sport": "pilates"
     }
   },
@@ -243,9 +243,9 @@ const elements = [
       "leisure": "fitness_centre",
       "name": "Jetset Pilates",
       "not:brand:wikidata": "Q109328844",
-      "phone": "+1-555-0104",
+      "phone": "SAMPLE_PHONE_4",
       "sport": "pilates",
-      "website": "https://jetsetpilates.com/tx/downtown-austin/"
+      "website": "SAMPLE_WEBSITE_3"
     }
   },
   {
@@ -334,9 +334,9 @@ const elements = [
       "addr:unit": "109",
       "leisure": "fitness_centre",
       "name": "Round Rock Krav Maga & Kick Boxing",
-      "phone": "+1-555-0105",
+      "phone": "SAMPLE_PHONE_5",
       "sport": "fitness;kickboxing;krav_maga;yoga",
-      "website": "https://www.roundrockkravmaga.com/"
+      "website": "SAMPLE_WEBSITE_4"
     }
   },
   {
@@ -369,11 +369,11 @@ const elements = [
       "addr:postcode": "78723",
       "addr:state": "TX",
       "addr:street": "Robert Browning Street",
-      "email": "contact@example.com",
+      "email": "SAMPLE_EMAIL_1",
       "leisure": "fitness_centre",
       "name": "Ashtanga Yoga Austin",
       "sport": "yoga",
-      "website": "https://ashtangayogaaustin.com"
+      "website": "SAMPLE_WEBSITE_5"
     }
   },
   {
@@ -391,9 +391,9 @@ const elements = [
       "check_date": "2023-05-14",
       "leisure": "fitness_centre",
       "name": "Body + Shine Wellness",
-      "phone": "+1-555-0106",
+      "phone": "SAMPLE_PHONE_6",
       "sport": "yoga;pilates",
-      "website": "https://www.bodyandshinewellness.com/",
+      "website": "SAMPLE_WEBSITE_6",
       "wheelchair": "yes"
     }
   },
@@ -411,7 +411,7 @@ const elements = [
   },
   {
     "type": "node",
-    "id": 10566132284,
+    "id": SAMPLE_PHONE_7,
     "lat": 30.2153289,
     "lon": -97.8339027,
     "timestamp": "2023-01-18T21:47:13Z",
@@ -429,7 +429,7 @@ const elements = [
   },
   {
     "type": "node",
-    "id": 10718029541,
+    "id": SAMPLE_PHONE_8,
     "lat": 30.3233272,
     "lon": -97.7270069,
     "timestamp": "2023-03-07T01:37:24Z",
@@ -442,14 +442,14 @@ const elements = [
       "addr:unit": "C111",
       "leisure": "fitness_centre",
       "name": "Body Collective",
-      "phone": "+1-555-0107",
+      "phone": "SAMPLE_PHONE_9",
       "sport": "yoga;dance;dancing;pilates;barre;kizomba",
-      "website": "https://austinbodycollective.com"
+      "website": "SAMPLE_WEBSITE_7"
     }
   },
   {
     "type": "node",
-    "id": 10815473953,
+    "id": SAMPLE_PHONE_10,
     "lat": 30.2945795,
     "lon": -97.8240079,
     "timestamp": "2023-04-16T00:12:47Z",
@@ -460,18 +460,18 @@ const elements = [
       "addr:state": "TX",
       "addr:street": "Bee Caves Road",
       "check_date": "2023-04-15",
-      "email": "contact@example.com",
+      "email": "SAMPLE_EMAIL_2",
       "leisure": "fitness_centre",
       "name": "Wild Heart Yoga",
       "opening_hours": "Mo-Fr 07:00-21:00; Sa-Su 09:00-17:00",
-      "phone": "+1-555-0108",
+      "phone": "SAMPLE_PHONE_11",
       "sport": "yoga",
-      "website": "https://www.wildheartyogaaustin.com"
+      "website": "SAMPLE_WEBSITE_8"
     }
   },
   {
     "type": "node",
-    "id": 11157995497,
+    "id": SAMPLE_PHONE_12,
     "lat": 30.0871114,
     "lon": -97.8298144,
     "timestamp": "2023-08-30T23:00:43Z",
@@ -485,7 +485,7 @@ const elements = [
   },
   {
     "type": "node",
-    "id": 11447347958,
+    "id": SAMPLE_PHONE_13,
     "lat": 30.2742602,
     "lon": -97.7992642,
     "timestamp": "2023-12-23T20:54:39Z",
@@ -497,17 +497,17 @@ const elements = [
       "addr:street": "Bee Caves Road",
       "addr:unit": "745",
       "check_date": "2023-12-23",
-      "email": "contact@example.com",
+      "email": "SAMPLE_EMAIL_3",
       "leisure": "fitness_centre",
       "name": "Pilates Movement Studio",
-      "phone": "+1-555-0109",
-      "website": "https://www.thepilatesmovementstudio.net/",
+      "phone": "SAMPLE_PHONE_14",
+      "website": "SAMPLE_WEBSITE_9",
       "wheelchair": "yes"
     }
   },
   {
     "type": "node",
-    "id": 11801652627,
+    "id": SAMPLE_PHONE_15,
     "lat": 30.4763818,
     "lon": -97.8409929,
     "timestamp": "2024-04-08T09:05:14Z",
@@ -518,17 +518,17 @@ const elements = [
       "addr:state": "TX",
       "addr:street": "Cypress Creek Road",
       "addr:unit": "G",
-      "email": "contact@example.com",
+      "email": "SAMPLE_EMAIL_4",
       "leisure": "fitness_centre",
       "name": "Ying Yoga",
-      "phone": "+1-555-0110",
+      "phone": "SAMPLE_PHONE_16",
       "sport": "yoga",
-      "website": "https://www.ying.yoga/"
+      "website": "SAMPLE_WEBSITE_10"
     }
   },
   {
     "type": "node",
-    "id": 12244285823,
+    "id": SAMPLE_PHONE_17,
     "lat": 29.9960511,
     "lon": -98.0968731,
     "timestamp": "2024-10-11T14:14:10Z",
@@ -539,7 +539,7 @@ const elements = [
   },
   {
     "type": "node",
-    "id": 12256459084,
+    "id": SAMPLE_PHONE_18,
     "lat": 30.4793944,
     "lon": -97.8293102,
     "timestamp": "2025-01-04T07:18:53Z",
@@ -554,14 +554,14 @@ const elements = [
       "leisure": "fitness_centre",
       "name": "Fifty/50 Pilates",
       "opening_hours": "Mo-Fr 07:00-20:00; Sa-Su 08:00-15:00",
-      "phone": "+1-555-0111",
+      "phone": "SAMPLE_PHONE_19",
       "sport": "pilates",
-      "website": "https://www.fifty50pilates.com/"
+      "website": "SAMPLE_WEBSITE_11"
     }
   },
   {
     "type": "node",
-    "id": 12347069728,
+    "id": SAMPLE_PHONE_20,
     "lat": 30.2983374,
     "lon": -97.7058796,
     "timestamp": "2024-11-17T03:20:51Z",
@@ -579,7 +579,7 @@ const elements = [
   },
   {
     "type": "node",
-    "id": 12707881037,
+    "id": SAMPLE_PHONE_21,
     "lat": 30.253113,
     "lon": -97.7636248,
     "timestamp": "2025-03-28T21:31:11Z",
@@ -592,7 +592,7 @@ const elements = [
   },
   {
     "type": "node",
-    "id": 13269384443,
+    "id": SAMPLE_PHONE_22,
     "lat": 30.2658766,
     "lon": -97.7438805,
     "timestamp": "2026-02-12T05:04:20Z",
@@ -606,12 +606,12 @@ const elements = [
       "name": "Yoga Hom",
       "opening_hours": "Mo-Th 06:00-20:00; Fr 06:00-17:30; Sa 08:00-14:00; Su 09:30-14:00",
       "sport": "yoga",
-      "website": "https://www.yogahomaustin.com/"
+      "website": "SAMPLE_WEBSITE_13"
     }
   },
   {
     "type": "node",
-    "id": 13334610085,
+    "id": SAMPLE_PHONE_23,
     "lat": 30.2639097,
     "lon": -97.7325762,
     "timestamp": "2025-11-26T20:22:36Z",
@@ -631,7 +631,7 @@ const elements = [
   },
   {
     "type": "node",
-    "id": 13408218784,
+    "id": SAMPLE_PHONE_24,
     "lat": 30.5294431,
     "lon": -97.8141821,
     "timestamp": "2025-12-26T07:53:23Z",
@@ -653,7 +653,7 @@ const elements = [
   },
   {
     "type": "node",
-    "id": 13712909201,
+    "id": SAMPLE_PHONE_25,
     "lat": 30.1718172,
     "lon": -97.7863234,
     "timestamp": "2026-04-07T04:10:14Z",
@@ -664,7 +664,7 @@ const elements = [
   },
   {
     "type": "node",
-    "id": 13910916101,
+    "id": SAMPLE_PHONE_26,
     "lat": 30.447464,
     "lon": -97.7871422,
     "timestamp": "2026-06-19T08:50:45Z",
@@ -673,12 +673,12 @@ const elements = [
       "leisure": "fitness_centre",
       "name": "Anahata Yoga Sanctuary",
       "sport": "yoga",
-      "website": "https://anahatayogaatx.com/"
+      "website": "SAMPLE_WEBSITE_14"
     }
   },
   {
     "type": "node",
-    "id": 14075908601,
+    "id": SAMPLE_PHONE_27,
     "lat": 30.2792606,
     "lon": -97.7595565,
     "timestamp": "2026-08-06T02:25:20Z",
@@ -689,14 +689,14 @@ const elements = [
       "check_date": "2026-08-05",
       "leisure": "fitness_centre",
       "name": "Activ8 Studio",
-      "phone": "+1-555-0112",
+      "phone": "SAMPLE_PHONE_28",
       "sport": "yoga",
-      "website": "https://activ8studio.com/"
+      "website": "SAMPLE_WEBSITE_15"
     }
   },
   {
     "type": "node",
-    "id": 14077947501,
+    "id": SAMPLE_PHONE_29,
     "lat": 30.2717035,
     "lon": -97.7593163,
     "timestamp": "2026-08-07T03:38:45Z",
@@ -707,14 +707,14 @@ const elements = [
       "check_date": "2026-08-06",
       "leisure": "fitness_centre",
       "name": "Black Swan Yoga",
-      "phone": "+1-555-0113",
+      "phone": "SAMPLE_PHONE_30",
       "sport": "yoga",
-      "website": "https://www.blackswanyoga.com/studios/orchard"
+      "website": "SAMPLE_WEBSITE_16"
     }
   },
   {
     "type": "node",
-    "id": 14220760901,
+    "id": SAMPLE_PHONE_31,
     "lat": 30.2745999,
     "lon": -97.7640866,
     "timestamp": "2026-09-26T23:37:26Z",
@@ -776,7 +776,7 @@ return [{ json: { elements } }];
 |---|---|
 | url | `https://overpass-api.de/api/interpreter` |
 | sendQuery | `True` |
-| queryParameters.parameters › data | `=[out:json][timeout:180][bbox:{{ $json.south }},{{ $json.west }},{{ $json.north }},{{ $json.east }}]; (   nwr["sport"~"{{ $json.niche }}"];   nwr["leisure"="fitness_centre"]["name"~"["name"~"{{ $json.…` |
+| queryParameters.parameters › data | `=[out:json][timeout:180][bbox:{{ $json.south }},{{ $json.west }},{{ $json.north }},{{ $json.east }}]; (   nwr["sport"~"{{ $json.niche }}"];   nwr["leisure"="fitness_centre"]["name"~"{{ $json.niche }}"…` |
 | sendHeaders | `True` |
 | headerParameters.parameters › User-Agent | `RECON/0.1 (n8n lead research)` |
 | options.timeout | `200000` |
@@ -795,7 +795,7 @@ return [{ json: { elements } }];
 |---|---|
 | url | `https://overpass.private.coffee/api/interpreter` |
 | sendQuery | `True` |
-| queryParameters.parameters › data | `=[out:json][timeout:180][bbox:{{ $json.south }},{{ $json.west }},{{ $json.north }},{{ $json.east }}]; (   nwr["sport"~"{{ $json.niche }}"];   nwr["leisure"="fitness_centre"]["name"~"[Yy]oga\|[Pp]ilate…` |
+| queryParameters.parameters › data | `=[out:json][timeout:180][bbox:{{ $json.south }},{{ $json.west }},{{ $json.north }},{{ $json.east }}]; (   nwr["sport"~"{{ $json.niche }}"];   nwr["leisure"="fitness_centre"]["name"~"{{ $json.niche }}"…` |
 | sendHeaders | `True` |
 | headerParameters.parameters › User-Agent | `RECON/0.1 (n8n lead research)` |
 | options.timeout | `200000` |
@@ -1351,7 +1351,7 @@ RETURNING lead_key, business_name, site_status, automation_status, tags;
 
 **Why it exists.** Takes audited leads and counts audited neighbours within 10 km (and how many take bookings or have a working site).
 
-**Settings that matter.** always output data · execute once
+**Settings that matter.** retry: 3 tries, 5000 ms apart · always output data · execute once
 
 | Setting | Value |
 |---|---|
@@ -1694,7 +1694,7 @@ RETURNING lead_key, business_name, tier;
 
 **Why it exists.** Collects cold leads that have not been listed yet.
 
-**Settings that matter.** execute once
+**Settings that matter.** retry: 3 tries, 5000 ms apart · execute once
 
 | Setting | Value |
 |---|---|
@@ -1851,7 +1851,7 @@ SELECT last_update_id FROM telegram_poll_state WHERE bot = 'recon';
 
 | Setting | Value |
 |---|---|
-| url | `=https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates` |
+| url | `=https://api.telegram.org/botYOUR_TELEGRAM_BOT_TOKEN/getUpdates` |
 | sendQuery | `True` |
 | queryParameters.parameters › offset | `={{ Number($json.last_update_id) + 1 }}` |
 | queryParameters.parameters › timeout | `0` |
@@ -2130,7 +2130,7 @@ LEFT JOIN upd u ON true;
 | Setting | Value |
 |---|---|
 | method | `POST` |
-| url | `=https://api.telegram.org/bot<YOUR_BOT_TOKEN> /editMessageReplyMarkup` |
+| url | `=https://api.telegram.org/botYOUR_TELEGRAM_BOT_TOKEN/editMessageReplyMarkup` |
 | sendBody | `True` |
 | specifyBody | `json` |
 
@@ -2291,7 +2291,7 @@ LEFT JOIN upd u ON true;
 | Setting | Value |
 |---|---|
 | method | `POST` |
-| url | `=https://api.telegram.org/bot<YOUR_BOT_TOKEN> /editMessageReplyMarkup` |
+| url | `=https://api.telegram.org/botYOUR_TELEGRAM_BOT_TOKEN/editMessageReplyMarkup` |
 | sendBody | `True` |
 | specifyBody | `json` |
 
@@ -2364,7 +2364,7 @@ LEFT JOIN upd u ON true;
 
 | Setting | Value |
 |---|---|
-| chatId | `{TELEGRAM_CHAT_ID}` |
+| chatId | `YOUR_TELEGRAM_CHAT_ID` |
 | text | `=<b>RECON error</b> Node: {{ $json.execution.lastNodeExecuted }} What happened: {{ String($json.execution.error.message \|\| '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') }} R…` |
 | additionalFields.appendAttribution | `False` |
 | additionalFields.parse_mode | `HTML` |
