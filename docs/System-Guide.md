@@ -1,6 +1,6 @@
 # SOL Lead Engine · System Guide (General Edition)
 
-*v1.0 · rubric v0.3 · 58 working nodes · generated 2026-10-20 from the live n8n export by `tools/build_docs.py`.*
+*v1.0 · rubric v0.3 · 58 working nodes · generated 2026-10-21 from the live n8n export by `tools/build_docs.py`.*
 
 > **Living document.** Regenerated from the workflow itself, so it always matches what runs. Sections marked *changes with the build* are edited by the generator, not by hand.
 
@@ -8,15 +8,15 @@
 
 ## What this system does
 
-SOL Lead Engine finds established local businesses that customers struggle to reach online, audits each website like a frustrated customer, scores how much that is costing them with explainable rules, and puts every worthwhile lead in front of a human on Telegram before anything happens. Cold leads arrive as one daily summary; every decision is logged forever.
+SOL Lead Engine finds established local businesses that customers struggle to reach online, audits each website like a frustrated customer, scores how much that is costing them with deterministic rules, and keeps a human in the loop: the engine gathers the facts and lays them out on a Telegram card, and a person verifies them, looks at the business the way its customers would, and decides what happens next. Cold leads arrive as 1 daily summary, and every decision is written once to an append-only log.
 
 ## How to read the canvas
 
-There are **three paths** on one canvas, each with its own trigger:
+There are **3 paths** on 1 canvas, each with its own trigger:
 
 | Path | Trigger | What it does |
 |---|---|---|
-| Main path | Daily Run (2:00 pm) | find → clean → audit → score → cards and cold summary |
+| Main path | Daily Run (8:00 am Austin time) | find → clean → audit → score → cards and cold summary |
 | Poll Taps path | every minute | read your button taps and replies → decide → update the card |
 | Error lane | any failed published run | tell you what broke and where |
 
@@ -52,11 +52,11 @@ Every node below says **where it sits** (its path, lane, what feeds it and where
 
 **Where it sits.** From: (trigger, starts the path) · To: → Config
 
-**Why it exists.** Starts the main path every day at 2:00 pm (your timezone). Click Execute on it to run the same path by hand.
+**Why it exists.** Starts the main path every day at 8:00 am Austin time (America/Chicago), the market the engine audits. Click Execute on it to run the same path by hand.
 
 | Setting | Value |
 |---|---|
-| rule.interval[0].triggerAtHour | `14` |
+| rule.interval[0].triggerAtHour | `8` |
 
 ### 2 · Config
 
@@ -2142,7 +2142,7 @@ LEFT JOIN upd u ON true;
   message_id: $json.message_id,
   reply_markup: { inline_keyboard: [[{
     text: ({ approve: 'Approved', reject: 'Rejected', snooze: 'Snoozed 14 days', closed: 'Marked closed', confirm_no_site: 'No site confirmed, rescoring' })[$json.action]
-          + ' · ' + $now.setZone('UTC').toFormat('MMM d, h:mm a'),
+          + ' · ' + $now.setZone('America/Chicago').toFormat('MMM d, h:mm a'),
     callback_data: 'done'
   }]] }
 }) }}
@@ -2302,7 +2302,7 @@ LEFT JOIN upd u ON true;
   chat_id: $json.chat_id,
   message_id: $json.review_message_id,
   reply_markup: { inline_keyboard: [[{
-    text: 'Website added, re-auditing · ' + $now.setZone('UTC').toFormat('MMM d, h:mm a'),
+    text: 'Website added, re-auditing · ' + $now.setZone('America/Chicago').toFormat('MMM d, h:mm a'),
     callback_data: 'done'
   }]] }
 }) }}

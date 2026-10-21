@@ -89,9 +89,9 @@ The workflow calls the scoring service once per lead, so **n8n must be able to r
 1. Import `workflow/sol-lead-engine.json` (⋯ → **Import from File**).
 2. **Postgres credential:** Credentials → New → Postgres; paste the connection details, set SSL as your host requires, **Test**. Attach it to every Postgres node (they show ⚠ until you do).
 3. **Telegram credential:** Credentials → New → Telegram API → paste the token → Test. Attach it to every Telegram node.
-4. **Bot token in three HTTP nodes:** **Get Updates**, **Edit Card** and **Edit Old Card** call Telegram directly. Replace `YOUR_TELEGRAM_BOT_TOKEN` in each URL with your token (keep the field in Expression mode). **Placeholders in the file:** `YOUR_TELEGRAM_BOT_TOKEN` (your token), `YOUR_TELEGRAM_CHAT_ID` (Config and Error Alert), `YOUR_POSTGRES_CREDENTIAL` and `YOUR_TELEGRAM_CREDENTIAL` (attach your own credentials to those nodes). `SAMPLE_PHONE_n`, `SAMPLE_EMAIL_n` and `SAMPLE_WEBSITE_n` are anonymized test data and need no change. Cleaner alternative: an environment variable read with `{{ $env.YOUR_VAR }}`, which needs `N8N_BLOCK_ENV_ACCESS_IN_NODE=false`.
+4. **Bot token in 3 HTTP nodes:** **Get Updates**, **Edit Card** and **Edit Old Card** call Telegram directly. Replace `YOUR_TELEGRAM_BOT_TOKEN` in each URL with your token (keep the field in Expression mode). **Placeholders in the file:** `YOUR_TELEGRAM_BOT_TOKEN` (your token), `YOUR_TELEGRAM_CHAT_ID` (Config and Error Alert), `YOUR_POSTGRES_CREDENTIAL` and `YOUR_TELEGRAM_CREDENTIAL` (attach your own credentials to those nodes). `SAMPLE_PHONE_n`, `SAMPLE_EMAIL_n` and `SAMPLE_WEBSITE_n` are anonymized test data and need no change. Cleaner alternative: an environment variable read with `{{ $env.YOUR_VAR }}`, which needs `N8N_BLOCK_ENV_ACCESS_IN_NODE=false`.
 5. **Score node:** set the URL for your setup (Step 0). If you set `RECON_SCORE_KEY`, add the header `X-Score-Key`.
-6. **Workflow Settings:** your timezone · Error Workflow = this workflow · successful production executions **Do not save** (Poll Taps runs 1,440 times a day) · failed executions **Save**.
+6. **Workflow Settings:** Timezone = your market's (the shipped workflow uses America/Chicago for Austin, so the run and card times read in Austin time) · Error Workflow = this workflow · successful production executions **Do not save** (Poll Taps runs 1,440 times a day) · failed executions **Save**.
 
 > **Plain English: credentials and environment variables.** Secrets belong in n8n's credential store or the server's environment, never typed into a node or a config field. That's what lets this workflow be published without leaking anything.
 
@@ -112,7 +112,7 @@ The workflow calls the scoring service once per lead, so **n8n must be able to r
 | `use_fixture` | `true` | `true` = the saved Austin test set (no live calls), `false` = live OpenStreetMap. Keep `true` while setting up. |
 | `review_chat_id` | your chat id | Where cards and summaries go. A group chat works too (its id starts with `-`). |
 
-**Two niches at once?** Yes, as long as they belong together (`yoga|pilates`). For **unrelated** niches (`yoga` and `plumber`), run them as separate copies of the workflow, because the scoring rules are tuned per kind of business.
+**2 niches at once?** Yes, as long as they belong together (`yoga|pilates`). For **unrelated** niches (`yoga` and `plumber`), run them as separate copies of the workflow, because the scoring rules are tuned per kind of business.
 
 > **The rubric is niche-shaped.** The rules in `scoring/recon_rubric.py` were calibrated for **appointment businesses** (studios, salons, clinics, tutors): "no online booking" is a real frustration there. For a different kind of business, review the rules and add test cases before trusting the scores.
 
@@ -123,9 +123,9 @@ The workflow calls the scoring service once per lead, so **n8n must be able to r
 1. Keep `use_fixture` = **true**. Click **Execute** on **Daily Run**.
 2. Check: `SELECT automation_status, count(*) FROM leads_master GROUP BY 1;`
 3. Cards and a cold summary arrive in Telegram. **Tap a button**, then Execute on **Poll Taps**. The card should change to a label like "Snoozed 14 days".
-4. Set `use_fixture` = **false** and **Publish**. It now runs daily at 2:00 pm and reads taps every minute.
+4. Set `use_fixture` = **false** and **Publish**. It now runs daily at 8:00 am in the workflow's timezone (Austin time as shipped) and reads taps every minute.
 
-> **Plain English: what is cron?** A timetable for computers: "run this at 2 pm every day". n8n's Schedule Trigger is cron with a friendly face.
+> **Plain English: what is cron?** A timetable for computers: "run this at 8:00 am every day". n8n's Schedule Trigger is cron with a friendly face.
 
 > **Plain English: polling vs webhooks.** A webhook is Telegram *calling you*; it needs your n8n reachable from the internet (a tunnel or a server). Polling is *you asking* "anything new?" every minute and needs neither, which is why this build uses it.
 

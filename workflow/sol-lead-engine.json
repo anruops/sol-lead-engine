@@ -1069,7 +1069,7 @@
         "url": "=https://api.telegram.org/botYOUR_TELEGRAM_BOT_TOKEN/editMessageReplyMarkup",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({\n  chat_id: $json.chat_id,\n  message_id: $json.message_id,\n  reply_markup: { inline_keyboard: [[{\n    text: ({ approve: 'Approved', reject: 'Rejected', snooze: 'Snoozed 14 days', closed: 'Marked closed', confirm_no_site: 'No site confirmed, rescoring' })[$json.action]\n          + ' · ' + $now.setZone('UTC').toFormat('MMM d, h:mm a'),\n    callback_data: 'done'\n  }]] }\n}) }}",
+        "jsonBody": "={{ JSON.stringify({\n  chat_id: $json.chat_id,\n  message_id: $json.message_id,\n  reply_markup: { inline_keyboard: [[{\n    text: ({ approve: 'Approved', reject: 'Rejected', snooze: 'Snoozed 14 days', closed: 'Marked closed', confirm_no_site: 'No site confirmed, rescoring' })[$json.action]\n          + ' · ' + $now.setZone('America/Chicago').toFormat('MMM d, h:mm a'),\n    callback_data: 'done'\n  }]] }\n}) }}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1186,7 +1186,7 @@
         "url": "=https://api.telegram.org/botYOUR_TELEGRAM_BOT_TOKEN/editMessageReplyMarkup",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({\n  chat_id: $json.chat_id,\n  message_id: $json.review_message_id,\n  reply_markup: { inline_keyboard: [[{\n    text: 'Website added, re-auditing · ' + $now.setZone('UTC').toFormat('MMM d, h:mm a'),\n    callback_data: 'done'\n  }]] }\n}) }}",
+        "jsonBody": "={{ JSON.stringify({\n  chat_id: $json.chat_id,\n  message_id: $json.review_message_id,\n  reply_markup: { inline_keyboard: [[{\n    text: 'Website added, re-auditing · ' + $now.setZone('America/Chicago').toFormat('MMM d, h:mm a'),\n    callback_data: 'done'\n  }]] }\n}) }}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1503,7 +1503,7 @@
         "rule": {
           "interval": [
             {
-              "triggerAtHour": 14
+              "triggerAtHour": 8
             }
           ]
         }
@@ -1590,7 +1590,7 @@
     },
     {
       "parameters": {
-        "content": "## Daily Run fires every day at 2:00 pm (your timezone). \n\nThe manual trigger runs the same path on demand.",
+        "content": "## Daily Run fires every day at 8:00 am Austin time (America/Chicago), the market it audits. \n\nThe manual trigger runs the same path on demand.",
         "height": 128,
         "width": 288
       },
@@ -2406,6 +2406,6 @@
   },
   "settings": {
     "executionOrder": "v1",
-    "timezone": "UTC"
+    "timezone": "America/Chicago"
   }
 }

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-21 · v1.0.2 · v1 documentation complete, Austin time
+- New docs: Customize It, FAQ (with a plain-English glossary), Runbook (13 real incidents and their fixes), Case Study (measured test results only), Reference (architecture diagram, data dictionary, calibration log v0.1 to v0.3).
+- The workflow now runs on the market's clock: timezone America/Chicago, daily run at 8:00 am Austin time, and card timestamps in Austin time.
+- Every term in the README and docs now reads as the term, what it means, why it's there and how SOL does it (Reference section 0 is the full table).
+- Compliance notes now follow the US market (CAN-SPAM) instead of UK examples; distances also given in miles.
+- The v2 list is now a slow-site signal and proposal drafting. Finding missing websites and checking rebrands stay manual on purpose, in the review gate.
+
 ## 2026-10-20 · v1.0.1
 - Fixed: the OSM Fetch niche query (line 2 was malformed, so live runs fell back to the mirror). Main and mirror now both read the niche keywords from Config.
 - Retry on fail added to Score Batch and Cold Batch (3 tries, 5 s apart).
