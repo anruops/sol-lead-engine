@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-10-22 · v1.0.3 · search area described as a box
+- The search area is a box, not a circle: each edge is `radius_m` from the center, so the corners reach about 1.4 times further (40 km edges, about 35 miles at the corners). README, Case Study, Customize It, Set Up From Zero and the System Guide now say so.
+
 ## 2026-10-21 · v1.0.2 · v1 documentation complete, Austin time
 - New docs: Customize It, FAQ (with a plain-English glossary), Runbook (13 real incidents and their fixes), Case Study (measured test results only), Reference (architecture diagram, data dictionary, calibration log v0.1 to v0.3).
 - The workflow now runs on the market's clock: timezone America/Chicago, daily run at 8:00 am Austin time, and card timestamps in Austin time.

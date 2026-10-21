@@ -12,7 +12,7 @@ Finding those businesses by hand is slow. Someone has to search the map, open ea
 
 ## The goal for v1
 
-1 system that **finds** these businesses, **audits** each website the way a customer would experience it, **scores** what that's likely costing them with deterministic rules, and keeps a **human in the loop** before anything happens, with every decision logged. No outreach in v1, because discovery and judgment come first. The first market is yoga and pilates studios within 40 km (about 25 miles) of central Austin, Texas.
+1 system that **finds** these businesses, **audits** each website the way a customer would experience it, **scores** what that's likely costing them with deterministic rules, and keeps a **human in the loop** before anything happens, with every decision logged. No outreach in v1, because discovery and judgment come first. The first market is yoga and pilates studios in a box reaching 40 km (about 25 miles) out from central Austin, Texas, in each direction, so its corners reach about 35 miles.
 
 ## What I built
 
@@ -39,7 +39,7 @@ Data lives in PostgreSQL (Neon) across 7 migrations, with append-only decision a
 
 Real data changed the plan, and each change was logged:
 - **Keys:** chains share a website, so leads are keyed on the map ID, not the domain.
-- **Search shape:** a 40 km circle timed out; a bounding box works.
+- **Search shape:** a 40 km circle timed out; a bounding box works. The box is wider than the circle at its corners (about 56 km, or 35 miles), which is how towns like Wimberley come into range.
 - **Calibration, v0.1 to v0.3:** the first rubric ignored working websites (8 of 10 test leads came out "possibly closed"); then missing map data was treated as closed; then missing information was scored as a "no". Each round was a logged reset with every old score kept.
 - **Reliability gaps found and fixed:** a stall when nothing was left to audit (gates added), scoring running twice (audit made one straight path), a re-run wiping a hand-added website (manual data protected), a live query broken by an edit that a saved-data test couldn't see (rule: test live connections live).
 - **Privacy:** before publishing, a scan found real phone numbers, emails and map contributors' usernames in the test data. A sharing standard and 2 independent leak checks now run on every build.

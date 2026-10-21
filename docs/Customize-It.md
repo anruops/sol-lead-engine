@@ -25,7 +25,7 @@
 
 1. Open **Config** (main path, right after Daily Run).
 2. Set `lat` and `lon` to the center (Google Maps: right-click → click the numbers). Set `city` as a label. v1 ships with central Austin: `30.2672`, `-97.7431`.
-3. Set `radius_m`, in meters. Dense cities: 10000 to 20000 (about 6 to 12 miles). Spread-out suburbs: up to 40000 (about 25 miles), which is what v1 uses for Austin. Very large areas are slow and can time out on the public map servers.
+3. Set `radius_m`, in meters. Dense cities: 10000 to 20000 (about 6 to 12 miles). Spread-out suburbs: up to 40000 (about 25 miles), which is what v1 uses for Austin. The search is a box, not a circle: `radius_m` is the distance to each edge, so the corners reach about 1.4 times further (40000 reaches about 35 miles at the corners). Very large areas are slow and can time out on the public map servers.
 4. Set `country`. `US` marks leads as email-allowed for later outreach; `GB` blocks email by default, because UK rules treat sole traders as individuals.
 5. Set the **timezone** in Workflow Settings to the new market's (America/Chicago for Austin), so the daily run and card timestamps read in that market's local time.
 6. Run once with `use_fixture` = **false** and check **Log Mining Run**: `endpoint` should be `main` and `found` should be above 0.

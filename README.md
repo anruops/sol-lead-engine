@@ -4,7 +4,7 @@
 
 **▶ Explore the live workflow: https://anruops.github.io/sol-lead-engine/**
 
-Built in n8n with PostgreSQL, a tested Python scoring service and a Telegram review gate. v1 is pointed at yoga and pilates studios within 40 km (about 25 miles) of central Austin, Texas, and it runs every morning on Austin time, unattended; when anything breaks, it tells you within a minute.
+Built in n8n with PostgreSQL, a tested Python scoring service and a Telegram review gate. v1 is pointed at yoga and pilates studios in a box reaching 40 km (about 25 miles) out from central Austin, Texas, in each direction (the corners reach about 35 miles, out to towns like Wimberley), and it runs every morning on Austin time, unattended; when anything breaks, it tells you within a minute.
 
 ## What it does
 

@@ -1,6 +1,6 @@
 # SOL Lead Engine · System Guide (General Edition)
 
-*v1.0 · rubric v0.3 · 58 working nodes · generated 2026-10-21 from the live n8n export by `tools/build_docs.py`.*
+*v1.0 · rubric v0.3 · 58 working nodes · generated 2026-10-22 from the live n8n export by `tools/build_docs.py`.*
 
 > **Living document.** Regenerated from the workflow itself, so it always matches what runs. Sections marked *changes with the build* are edited by the generator, not by hand.
 
@@ -84,7 +84,7 @@ Every node below says **where it sits** (its path, lane, what feeds it and where
 
 **Where it sits.** From: Config · To: → Live or Fixture?
 
-**Why it exists.** Turns the centre point and radius into a north/south/east/west box, because a box query is fast and a radius query timed out.
+**Why it exists.** Turns the center point and radius_m into a north/south/east/west box, each edge radius_m from the center (so the corners reach about 1.4 times further), because a box query is fast and a radius query timed out.
 
 | Setting | Value |
 |---|---|
