@@ -73,4 +73,8 @@ n8n (npm, Docker or Cloud) · PostgreSQL (built on Neon, runs on any Postgres 13
 
 Claude was my guide and reviewer. Every change was proven in a controlled run first (test data, one change at a time, checked against the database and the logs) before it touched the live system, and the scoring rules are guarded by tests so a change that breaks a known case fails loudly.
 
+## License
+
+All rights reserved. This repository is shared as a portfolio for viewing; see [LICENSE](LICENSE). For licensing or commercial use, contact me through [github.com/anruops](https://github.com/anruops).
+
 *Built by Angela Rubia, Systems-first AI & Automation Engineer.*
